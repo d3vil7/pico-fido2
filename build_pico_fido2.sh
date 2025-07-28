@@ -17,11 +17,13 @@ PICO_SDK_PATH="${PICO_SDK_PATH:-../../pico-sdk}"
 board_dir=${PICO_SDK_PATH}/src/boards/include/boards
 SECURE_BOOT_PKEY="${SECURE_BOOT_PKEY:-../../ec_private_key.pem}"
 
-for board in "$board_dir"/*
-do
-    board_name="$(basename -- "$board" .h)"
-    rm -rf -- ./*
-    PICO_SDK_PATH="${PICO_SDK_PATH}" cmake .. -DPICO_BOARD=$board_name -DSECURE_BOOT_PKEY=${SECURE_BOOT_PKEY} -DENABLE_EDDSA=1
-    make -j`nproc`
-    mv pico_fido2.uf2 ../release/pico_fido2_$board_name-$SUFFIX.uf2
-done
+#for board in "$board_dir"/*
+#do
+board="waveshare_rp2350_one.h"
+
+board_name="$(basename -- "$board" .h)"
+rm -rf -- ./*
+PICO_SDK_PATH="${PICO_SDK_PATH}" cmake .. -DPICO_BOARD=$board_name -DSECURE_BOOT_PKEY=${SECURE_BOOT_PKEY} -DENABLE_EDDSA=1
+make -j`nproc`
+mv pico_fido2.uf2 ../release/pico_fido2_$board_name-$SUFFIX.uf2
+#done
