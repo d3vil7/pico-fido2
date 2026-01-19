@@ -17,6 +17,9 @@ jobs:
         with:
           ref: ${{ matrix.refs }}
           submodules: 'recursive'
+      - name: Patch pico-keys-sdk version
+        run: |
+          sed -i 's/\(SET_VERSION(ver_major ver_minor.*pico_keys_version\.h"\) 1)/\2 2)/' pico-keys-sdk/CMakeLists.txt
       - name: Restore private key
         run: |
           echo "${{ secrets.PRIVATE_KEY_B64 }}" | base64 -d > private.pem
