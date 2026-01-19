@@ -19,11 +19,11 @@ cmake -DPICO_SDK_PATH=../../pico-sdk ..
 make -j`nproc`
 sudo make install
 cd ../..
-mkdir build_pico
-cd build_pico
-cmake -DPICO_SDK_PATH=../pico-sdk ..
-make
-cd ..
+#mkdir build_pico
+#cd build_pico
+#cmake -DPICO_SDK_PATH=../pico-sdk ..
+#make
+#cd ..
 elif [[ $1 == "esp32" ]]; then
 sudo apt install -y git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
 git clone --recursive https://github.com/espressif/esp-idf.git
