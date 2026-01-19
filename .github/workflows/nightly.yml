@@ -23,13 +23,13 @@ jobs:
             pico-keys-sdk/CMakeLists.txt
           rm -rf pico-keys-sdk/cmake/version.cmake
           cp ./version.cmake ./pico-keys-sdk/cmake/
-          sed -i 's/^#define[[:space:]]\+PICO_FIDO_VERSION[[:space:]]\+0x0606/#define PICO_FIDO_VERSION 0x0702/' \
-            pico-fido/src/fido/version.h
+          #sed -i 's/^#define[[:space:]]\+PICO_FIDO_VERSION[[:space:]]\+0x0606/#define PICO_FIDO_VERSION 0x0702/' \
+          #  pico-fido/src/fido/version.h
 
-          sed -i 's/^#define[[:space:]]\+PICO_KEYS_SDK_VERSION[[:space:]]\+0x0700/#define PICO_KEYS_SDK_VERSION 0x0802/' \
-            pico-keys-sdk/src/pico_keys_version.h
-          grep -q '0x0702' pico-fido/src/fido/version.h || exit 1
-          grep -q '0x0802' pico-keys-sdk/src/pico_keys_version.h || exit 1
+          #sed -i 's/^#define[[:space:]]\+PICO_KEYS_SDK_VERSION[[:space:]]\+0x0700/#define PICO_KEYS_SDK_VERSION 0x0802/' \
+            #pico-keys-sdk/src/pico_keys_version.h
+          #grep -q '0x0702' pico-fido/src/fido/version.h || exit 1
+          #grep -q '0x0802' pico-keys-sdk/src/pico_keys_version.h || exit 1
 
       - name: Restore private key
         run: |
