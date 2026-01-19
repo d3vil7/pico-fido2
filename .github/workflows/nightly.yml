@@ -19,6 +19,9 @@ jobs:
           submodules: 'recursive'
       - name: Patch versions
         run: |
+          sed -i 's/\(SET_VERSION(ver_major ver_minor.*pico_keys_version\.h"\) 1)/\1 2)/' \
+            pico-keys-sdk/CMakeLists.txt
+            
           sed -i 's/^#define[[:space:]]\+PICO_FIDO_VERSION[[:space:]]\+0x0606/#define PICO_FIDO_VERSION 0x0702/' \
             pico-fido/src/fido/version.h
 
